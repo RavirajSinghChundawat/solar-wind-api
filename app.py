@@ -12,8 +12,8 @@ import os
 app = Flask(__name__)
 
 # Load trained model and scaler
-model = joblib.load("predictive_maintenance_model.pkl")
-scaler = joblib.load("feature_scaler.pkl")
+model = joblib.load("predictive_maintenance_model.joblib")
+scaler = joblib.load("feature_scaler.joblib")
 
 # Home Route
 @app.route('/')
@@ -62,7 +62,7 @@ def predict():
             log_df.to_csv("prediction_logs.csv", mode='a', header=False,index=False)
         else:
             log_df.to_csv("prediction_logs.csv", index=False)
-    
+        
         
         return jsonify(result)
 
